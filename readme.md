@@ -4,6 +4,8 @@
 
 ICPHunter 是一个使用 Python 编写的命令行工具，其核心功能是查询网站域名的 ICP 备案信息。它支持多种输入方式，既可以针对单个域名、URL 或者企业名进行查询，也能通过文件批量处理多个查询项。查询结果将以 Excel 文件的形式保存，文件名采用输入的公司名称或域名，方便用户查看和管理。
 
+主要为了解决HW或者SRC过程中查询ICP备案过程繁琐的问题。
+
 ## 二、功能特性
 
 1. **多样化输入方式**：支持单个域名、URL 或企业名的查询，同时也支持从文件中批量读取查询项。
@@ -61,18 +63,6 @@ python main.py -f domains.txt
 - `main.py`：项目的主程序文件，包含命令行接口和核心业务逻辑。
 - `requirements.txt`：记录项目所需的依赖库列表，方便快速安装。
 
-### 主要函数
-
-- `get_uuid()`：生成唯一的 UUID 用于请求的 Cookie。
-- `get_root_domain(input_url)`：从输入的 URL 中提取根域名。
-- `contains_chinese(s)`：判断字符串中是否包含中文字符。
-- `build_url_xpath(input)`：根据输入构建查询的 URL。
-- `fetch_data(url)`：发送 HTTP 请求获取网页内容。
-- `handle_data_xpath(data, output_filename)`：解析网页内容，提取备案信息并保存为 Excel 文件。
-- `fetch_and_handle_data_xpath(url, output_filename)`：调用 `fetch_data` 和 `handle_data_xpath` 完成单个查询的处理。
-- `process_file(filename)`：处理文件中的多个查询项，使用线程池并发执行。
-- `main(domain, file)`：命令行接口的主函数，根据用户输入调用相应的处理函数。
-
 ## 六、注意事项
 
 1. **网络连接**：确保你的网络连接正常，因为程序需要访问 `https://www.beianx.cn` 网站进行查询。
@@ -91,5 +81,5 @@ python main.py -f domains.txt
 如果你有任何疑问或建议，可以通过以下方式联系我：
 
 - **邮箱**：tyc9114@gmail.com
-- **微信**：TplusSs
+- **Wx**：TplusSs
 
