@@ -66,13 +66,14 @@ def handle_data_xpath(data, output_filename):
             type_ = tds[2].text.strip()
             icp_code = tds[3].text.strip()
             domain = tds[5].text.strip()
+            root_domain = get_root_domain(domain)  # 获取根域名
             pass_time = tds[6].text.strip()
-            results.append([unit, type_, icp_code, domain, pass_time])
+            results.append([unit, type_, icp_code, domain, root_domain, pass_time])
         else:
             print("[Error] IPC filing query failed! Skipping!")
 
     if results:
-        df = pd.DataFrame(results, columns=['主办单位名称', '主办单位性质', '网站备案号', '网站首页地址', '审核日期'])
+        df = pd.DataFrame(results, columns=['主办单位名称', '主办单位性质', '网站备案号', '网站首页地址', '根域名', '审核日期'])
         df.to_excel(f'{output_filename}.xlsx', index=False)
         print(f"结果已保存到 {output_filename}.xlsx")
 
